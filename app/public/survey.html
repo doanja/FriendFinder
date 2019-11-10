@@ -169,21 +169,31 @@
             // grabs the scores and store them in score array
             const inputs = $('.question');
             let scores = [];
+            let scoreTotal = 0;
             for (let i = 0; i < inputs.length; i++) {
                 scores.push($(inputs[i]).val());
+                scoreTotal += $(inputs[i]).val();
             }
 
             // object to be posted
             const profile = {
                 name: $("#name").val().trim(),
                 photo: $("#photo").val().trim(),
-                scores: scores
+                scores: scores,
+                scoreTotal: scoreTotal
             }
+
+            // calculate current user's score
+            // loop through each of the arrays in friends.js
+            // compare user's score to everyone else's scoretotal
+            // have a counter for min, update min score if a new one is found
+            // render modal with lowest score person
 
             $.post("/api/friends", profile)
                 .then((data) => {
                     console.log("survey.html", data);
                     alert("Adding Profile...");
+
                 });
         });
     </script>
