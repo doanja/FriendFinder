@@ -20,7 +20,6 @@
   "homepage": "https://github.com/doanja/FriendFinder#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "nodemon": "^1.19.4",
-    "path": "^0.12.7"
+    "nodemon": "^1.19.4"
   }
 }

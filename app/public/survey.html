@@ -179,12 +179,11 @@
                 photo: $("#photo").val().trim(),
                 scores: scores
             }
-            console.log('posting');
+
             $.post("/api/friends", profile)
                 .then((data) => {
-                    console.log('posting shit');
                     console.log("survey.html", data);
-                    alert("Adding character...");
+                    alert("Adding Profile...");
                 });
         });
     </script>
