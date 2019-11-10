@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node app",
-    "dev": "nodemon app"
+    "start": "node server",
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/doanja/FriendFinder#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^1.19.4",
     "path": "^0.12.7"
   }
 }

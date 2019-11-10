@@ -5,12 +5,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./css/reset.css">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <title>Friend Finder!</title>
 </head>
@@ -36,7 +34,7 @@
 
         <h3 class="font-weight-bold">Question 1</h3>
         <h6>Your mind is always buzzing with unexplored ideas and plans.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q1">
+        <select class="form-control bg-dark text-light w-50 question" id="q1">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -48,7 +46,7 @@
 
         <h3 class="font-weight-bold">Question 2</h3>
         <h6>Generally speaking, you rely more on your experience than your imagination.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q2">
+        <select class="form-control bg-dark text-light w-50 question" id="q2">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -60,7 +58,7 @@
 
         <h3 class="font-weight-bold">Question 3</h3>
         <h6>You find it easy to stay relaxed and focused even when there is some pressure.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q3">
+        <select class="form-control bg-dark text-light w-50 question" id="q3">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -72,7 +70,7 @@
 
         <h3 class="font-weight-bold">Question 4</h3>
         <h6>You rarely do something just out of sheer curiosity.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q4">
+        <select class="form-control bg-dark text-light w-50 question" id="q4">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -84,7 +82,7 @@
 
         <h3 class="font-weight-bold">Question 5</h3>
         <h6>People can rarely upset you.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q5">
+        <select class="form-control bg-dark text-light w-50 question" id="q5">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -96,7 +94,7 @@
 
         <h3 class="font-weight-bold">Question 6</h3>
         <h6>It is often difficult for you to relate to other people’s feelings.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q6">
+        <select class="form-control bg-dark text-light w-50 question" id="q6">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -108,7 +106,7 @@
 
         <h3 class="font-weight-bold">Question 7</h3>
         <h6>In a discussion, truth should be more important than people’s sensitivities.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q7">
+        <select class="form-control bg-dark text-light w-50 question" id="q7">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -120,7 +118,7 @@
 
         <h3 class="font-weight-bold">Question 8</h3>
         <h6>You rarely get carried away by fantasies and ideas.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q8">
+        <select class="form-control bg-dark text-light w-50 question" id="q8">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -133,7 +131,7 @@
         <h3 class="font-weight-bold">Question 9</h3>
         <h6>You think that everyone’s views should be respected regardless of whether they are supported by facts or
             not.</h6>
-        <select class="form-control bg-dark text-light w-50" id="q8">
+        <select class="form-control bg-dark text-light w-50 question" id="q8">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -145,7 +143,7 @@
 
         <h3 class="font-weight-bold">Question 10</h3>
         <h6>You feel more energetic after spending time with a group of people.</h6>
-        <select class="form-control bg-dark text-light w-50 w-50" id="q10">
+        <select class="form-control bg-dark text-light w-50 question w-50" id="q10">
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -163,18 +161,34 @@
             <a href="#">API Friend List</a> | <a href="#">GitHub Repo</a>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script type="text/javascript">
+        $("#submit").on("click", (e) => {
+            e.preventDefault();
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+            // grabs the scores and store them in score array
+            const inputs = $('.question');
+            let scores = [];
+            for (let i = 0; i < inputs.length; i++) {
+                scores.push($(inputs[i]).val());
+            }
+
+            // object to be posted
+            const profile = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: scores
+            }
+            console.log('posting');
+            $.post("/api/friends", profile)
+                .then((data) => {
+                    console.log('posting shit');
+                    console.log("survey.html", data);
+                    alert("Adding character...");
+                });
+        });
+    </script>
+
 </body>
 
 </html>
