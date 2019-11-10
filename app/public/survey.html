@@ -7,9 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
     <title>Friend Finder!</title>
 </head>
 
@@ -162,6 +159,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
     <script type="text/javascript">
         $("#submit").on("click", (e) => {
             e.preventDefault();
@@ -172,7 +171,7 @@
             let scoreTotal = 0;
             for (let i = 0; i < inputs.length; i++) {
                 scores.push($(inputs[i]).val());
-                scoreTotal += $(inputs[i]).val();
+                scoreTotal += parseInt($(inputs[i]).val());
             }
 
             // object to be posted
@@ -189,12 +188,14 @@
             // have a counter for min, update min score if a new one is found
             // render modal with lowest score person
 
-            $.post("/api/friends", profile)
-                .then((data) => {
-                    console.log("survey.html", data);
+            axios.post('/api/friends', { profile: profile })
+                .then(res => {
+                    console.log("survey.html", res);
                     alert("Adding Profile...");
+                }), (err) => {
+                    console.log(err);
+                }
 
-                });
         });
     </script>
 
