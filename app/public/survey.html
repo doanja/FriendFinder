@@ -7,6 +7,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-color: #666;
+        }
+
+        .container {
+            background-color: #fff;
+        }
+
+
+        #modal {
+            position: fixed;
+            z-index: 4;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+    </style>
+
     <title>Friend Finder!</title>
 </head>
 
@@ -161,42 +185,102 @@
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
     <script type="text/javascript">
+        // when the user clicks submit...
         $("#submit").on("click", (e) => {
             e.preventDefault();
 
+            // check to make sure user completed the form
+            if (!$('#name').val() || !$('#photo').val()) {
+                alert('You must enter something to search...');
+            }
+            else {
+
+                const newProfile = createNewProfile();
+
+                console.log(newProfile);
+                // post the new profile to the server
+                axios.post('/api/friends', { profile: newProfile })
+                    .then(res => {
+                        console.log('Profile successsfully created.');
+                    }), (err) => {
+                        console.log(err);
+                    }
+
+                // render modal with the matched profile
+                axios.get(`/api/friends/${newProfile.scoreTotal}`)
+                    .then(res => {
+                        renderModal(res.data);
+                    }), (err) => {
+                        console.log(err);
+                    }
+            }
+        });
+
+        // function to create the profile to post to the server
+        const createNewProfile = () => {
             // grabs the scores and store them in score array
             const inputs = $('.question');
             let scores = [];
             let scoreTotal = 0;
+
+            // loop through scores array and add them to the score array and calc total score
             for (let i = 0; i < inputs.length; i++) {
-                scores.push($(inputs[i]).val());
+                scores.push(parseInt($(inputs[i]).val()));
                 scoreTotal += parseInt($(inputs[i]).val());
             }
 
-            // object to be posted
-            const profile = {
+            // profile to be posted containing the form inputs
+            return {
                 name: $("#name").val().trim(),
                 photo: $("#photo").val().trim(),
                 scores: scores,
                 scoreTotal: scoreTotal
             }
+        }
 
-            // calculate current user's score
-            // loop through each of the arrays in friends.js
-            // compare user's score to everyone else's scoretotal
-            // have a counter for min, update min score if a new one is found
-            // render modal with lowest score person
+        /**
+         * function to render the modal
+         * @param {object} profile the profile to be shown in the modal
+         */
+        const renderModal = (profile) => {
+            const modalFade = $('<div>', { id: 'modal' }).css('z-index', 5);
+            const modalDiaglogue = $('<div>', { class: 'modal-dialog' });
+            const modalContent = $('<div>', { class: 'modal-content' });
+            const modalHeader = $('<div>', { class: 'modal-header' });
+            const modalTitle = $('<h5>', { class: 'modal-title' }).text(`Matched with ${profile.name}!`);
+            const modalImg = $('<img>', { class: 'p-5', src: profile.photo });
+            const modalprefooter = $('<div>', { class: 'modal-footer' });
+            const button = $('<button>', { class: 'btn btn-primary', id: 'modal-button' }).text('Close');
 
-            axios.post('/api/friends', { profile: profile })
-                .then(res => {
-                    console.log("survey.html", res);
-                    alert("Adding Profile...");
-                }), (err) => {
-                    console.log(err);
+            $('.container').prepend(modalFade);
+            modalFade.append(modalDiaglogue);
+            modalDiaglogue.append(modalContent);
+            modalContent.append(modalHeader, modalImg, modalprefooter);
+            modalHeader.append(modalTitle);
+            modalprefooter.append(button);
+
+            clickModal();
+        }
+
+        // function to handle clicks on the modal to show/hide it
+        const clickModal = () => {
+            // Get the modal
+            const modal = document.getElementById('modal');
+
+            // when the user clicks the close button in the modal, close modal
+            $('#modal-button').click(() => {
+                $('#modal').remove();
+            });
+
+            // when the user clicks anywhere outside of the modal, close modal
+            window.onclick = e => {
+                if (e.target == modal) {
+                    $('#modal').remove();
                 }
-
-        });
+            };
+        };
     </script>
 
 </body>
