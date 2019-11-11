@@ -10,13 +10,15 @@ router.get('/', function(req, res) {
 router.get('/:profile', function(req, res) {
   const userScore = parseInt(req.params.profile);
 
-  // calculate the difference of scoreTotals for each profile stored as an arr
-  const copyProfiles = [...profiles].map(profile => {
-    return Math.abs(userScore - profile.scoreTotal);
-  });
+  let profileScores = [];
+
+  // calculate scores for all profiles excluding the last one (the user's score)
+  for (let i = 0; i < profiles.length - 1; i++) {
+    profileScores.push(Math.abs(userScore - profiles[i].scoreTotal));
+  }
 
   // get the min index
-  const minIndex = copyProfiles.indexOf(Math.min(...copyProfiles));
+  const minIndex = profileScores.indexOf(Math.min(...profileScores));
 
   return res.json(profiles[minIndex]);
 });

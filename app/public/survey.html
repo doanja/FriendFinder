@@ -29,6 +29,11 @@
             background-color: rgb(0, 0, 0);
             background-color: rgba(0, 0, 0, 0.4);
         }
+
+        .profile-photo {
+            width: 300px;
+            height: 300px;
+        }
     </style>
 
     <title>Friend Finder!</title>
@@ -199,7 +204,6 @@
 
                 const newProfile = createNewProfile();
 
-                console.log(newProfile);
                 // post the new profile to the server
                 axios.post('/api/friends', { profile: newProfile })
                     .then(res => {
@@ -250,7 +254,7 @@
             const modalContent = $('<div>', { class: 'modal-content' });
             const modalHeader = $('<div>', { class: 'modal-header' });
             const modalTitle = $('<h5>', { class: 'modal-title' }).text(`Matched with ${profile.name}!`);
-            const modalImg = $('<img>', { class: 'p-5', src: profile.photo });
+            const modalImg = $('<img>', { class: 'p-5 profile-photo', src: profile.photo });
             const modalprefooter = $('<div>', { class: 'modal-footer' });
             const button = $('<button>', { class: 'btn btn-primary', id: 'modal-button' }).text('Close');
 
