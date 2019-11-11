@@ -31,8 +31,8 @@
         }
 
         .profile-photo {
-            width: 300px;
-            height: 300px;
+            width: 100%;
+            height: 500px;
         }
     </style>
 
@@ -254,7 +254,7 @@
             const modalContent = $('<div>', { class: 'modal-content' });
             const modalHeader = $('<div>', { class: 'modal-header' });
             const modalTitle = $('<h5>', { class: 'modal-title' }).text(`Matched with ${profile.name}!`);
-            const modalImg = $('<img>', { class: 'p-5 profile-photo', src: profile.photo });
+            const modalImg = $('<img>', { class: 'p-5 mx-auto profile-photo', src: profile.photo });
             const modalprefooter = $('<div>', { class: 'modal-footer' });
             const button = $('<button>', { class: 'btn btn-primary', id: 'modal-button' }).text('Close');
 
