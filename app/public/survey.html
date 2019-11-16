@@ -61,6 +61,7 @@
         <h3 class="font-weight-bold">Question 1</h3>
         <h6>Your mind is always buzzing with unexplored ideas and plans.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q1">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -73,6 +74,7 @@
         <h3 class="font-weight-bold">Question 2</h3>
         <h6>Generally speaking, you rely more on your experience than your imagination.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q2">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -85,6 +87,7 @@
         <h3 class="font-weight-bold">Question 3</h3>
         <h6>You find it easy to stay relaxed and focused even when there is some pressure.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q3">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -97,6 +100,7 @@
         <h3 class="font-weight-bold">Question 4</h3>
         <h6>You rarely do something just out of sheer curiosity.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q4">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -109,6 +113,7 @@
         <h3 class="font-weight-bold">Question 5</h3>
         <h6>People can rarely upset you.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q5">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -121,6 +126,7 @@
         <h3 class="font-weight-bold">Question 6</h3>
         <h6>It is often difficult for you to relate to other people’s feelings.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q6">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -133,6 +139,7 @@
         <h3 class="font-weight-bold">Question 7</h3>
         <h6>In a discussion, truth should be more important than people’s sensitivities.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q7">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -145,6 +152,7 @@
         <h3 class="font-weight-bold">Question 8</h3>
         <h6>You rarely get carried away by fantasies and ideas.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q8">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -158,6 +166,7 @@
         <h6>You think that everyone’s views should be respected regardless of whether they are supported by facts or
             not.</h6>
         <select class="form-control bg-dark text-light w-50 question" id="q8">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -170,6 +179,7 @@
         <h3 class="font-weight-bold">Question 10</h3>
         <h6>You feel more energetic after spending time with a group of people.</h6>
         <select class="form-control bg-dark text-light w-50 question w-50" id="q10">
+            <option class="text-dark bg-light" value="0">Select</option>
             <option class="text-dark bg-light" value="1">1 (Strongly Disagree)</option>
             <option class="text-dark bg-light" value="2">2</option>
             <option class="text-dark bg-light" value="3">3</option>
@@ -197,8 +207,8 @@
             e.preventDefault();
 
             // check to make sure user completed the form
-            if (!$('#name').val() || !$('#photo').val()) {
-                alert('You must enter something to search...');
+            if (!$('#name').val() || !$('#photo').val() || !checkQuestions()) {
+                alert('You must finish the form.');
             }
             else {
 
@@ -221,6 +231,16 @@
                     }
             }
         });
+
+        const checkQuestions = () => {
+            const inputs = $('.question');
+            for (let i = 0; i < inputs.length; i++) {
+                if (parseInt($(inputs[i]).val()) === 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
 
         // function to create the profile to post to the server
         const createNewProfile = () => {
@@ -275,16 +295,25 @@
 
             // when the user clicks the close button in the modal, close modal
             $('#modal-button').click(() => {
+                location.reload()
                 $('#modal').remove();
+
             });
 
             // when the user clicks anywhere outside of the modal, close modal
             window.onclick = e => {
                 if (e.target == modal) {
+                    location.reload()
                     $('#modal').remove();
                 }
             };
         };
+
+        // clear's inputs
+        // const clearInputs = () => {
+        //     $('#name').val("");
+        //     $('#photo').val("");
+        // }
     </script>
 
 </body>
