@@ -9,5 +9,6 @@ app.use(express.json());
 // Routes
 app.use("/", require("./app/routing/apiRoutes"));
 app.use("/api/friends", require("./app/routing/htmlRoutes"));
+app.use("/", require("./app/routing/defaultRoutes"));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
