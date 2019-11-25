@@ -2,12 +2,12 @@ const express = require("express");
 const router = express.Router();
 const profiles = require("../data/friends");
 
-router.get("/", function(req, res) {
+router.get("/", (req, res) => {
   return res.json(profiles);
 });
 
 // Displays a single profile
-router.get("/:profile", function(req, res) {
+router.get("/:profile", (req, res) => {
   const userScore = parseInt(req.params.profile);
 
   let profileScores = [];
@@ -24,7 +24,7 @@ router.get("/:profile", function(req, res) {
 });
 
 // Create New Profiles - takes in JSON input
-router.post("/", function(req, res) {
+router.post("/", (req, res) => {
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
   const newProfile = req.body.profile;
